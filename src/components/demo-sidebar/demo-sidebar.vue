@@ -52,10 +52,13 @@ export default {
       document.addEventListener('mousemove', this.move, false);
     },
     sidebarMouseleave() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      document.removeEventListener('mousemove', this.move, false);
       this.menu.forEach((v) => {
         v.showSecond = false;
       });
-      document.removeEventListener('mousemove', this.move, false);
     },
     listMouseenter(item, $event) {
       if (this.timer) {
