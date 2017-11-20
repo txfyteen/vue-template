@@ -1,6 +1,6 @@
 # 说明
 
->  非常简单的一个vue2 + vuex + vue-router + axios的基础架构，整个流程一目了然，麻雀虽小，五脏俱全，适合作为入门练习。
+>  非常简单的一个vue2 + vuex + vue-router + axios的基础架构，整个流程一目了然，适合作为入门练习。
 
 >  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^。
 
@@ -19,7 +19,7 @@ cd vue-template
 # 安装依赖
 npm install
 
-# 开启本地服务器localhost:8088
+# 开启本地服务器localhost:8000
 npm run dev
 
 # 发布环境
