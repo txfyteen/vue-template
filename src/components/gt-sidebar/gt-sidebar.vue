@@ -1,7 +1,7 @@
 <template>
   <aside ref="sidebar" @mouseenter="sidebarMouseenter()" @mouseleave="sidebarMouseleave()">
     <ul class="nav">
-      <li v-for = "first in lists" :class="{hover:first.showSecond}" @mouseenter="listMouseenter(first, $event)" @mouseleave.stop="listMouseleave(first, $event)">
+      <li v-for = "first in menu" :class="{hover:first.showSecond}" @mouseenter="listMouseenter(first, $event)" @mouseleave.stop="listMouseleave(first, $event)">
         <router-link :to="first.link">{{first.name}}</router-link>
         <ul class="second-wrap" :class = "{active: first.showSecond}" v-show="first.children" @mouseenter="mouseenterSub()" @mouseleave="mouselearveSub()">
           <li v-for = "second in first.children">
@@ -16,32 +16,17 @@
 <script>
 export default {
   name: 'gt-sidebar',
+  props: {
+    menu: {
+      type: Array,
+      require: true,
+      default: function() {
+        return [];
+      }
+    }
+  },
   data () {
     return {
-      lists: [
-        {
-          name: 'Upload',
-          link: '/demo-upload',
-          showSecond: false,
-          children: [
-            {
-              name: 'Upload',
-              link: 'demo-upload'
-            }
-          ]
-        },
-        {
-          name: 'Form',
-          link: '/demo-form',
-          showSecond: false,
-          children: [
-            {
-              name: 'Form',
-              link: 'demo-form'
-            }
-          ]
-        }
-      ],
       pOne: {x: 0, y: 0}, // 三角形第一个点,子菜单左上角
       pTwo: {x: 0, y: 0}, // 三角形第二个点，子菜单左下角
       pThree: {x: 0, y: 0}, // 鼠标上次坐标，也是三角形的第三个点，跟着鼠标的移动而变化
@@ -67,7 +52,7 @@ export default {
       document.addEventListener('mousemove', this.move, false);
     },
     sidebarMouseleave() {
-      this.lists.forEach((v) => {
+      this.menu.forEach((v) => {
         v.showSecond = false;
       });
       document.removeEventListener('mousemove', this.move, false);
@@ -81,14 +66,14 @@ export default {
           if (this.mouseInSub) {
             return;
           }
-          this.lists.forEach((v) => {
+          this.menu.forEach((v) => {
             v.showSecond = false;
           });
           item.showSecond = true;
           this.timer = null;
         }, 300);
       } else {
-        this.lists.forEach((v) => {
+        this.menu.forEach((v) => {
           v.showSecond = false;
         });
         item.showSecond = true;

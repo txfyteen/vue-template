@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <gt-header />
-    <gt-sidebar />
+    <gt-sidebar :menu="sidebarMenu"/>
     <div class="main">
       <transition>
         <keep-alive>
@@ -19,17 +19,21 @@ import { env } from 'api/env.js';
 import GtHeader from 'components/gt-header/gt-header';
 import GtSidebar from 'components/gt-sidebar/gt-sidebar';
 import GtFooter from 'components/gt-footer/gt-footer';
+import axios from 'axios';
 
 export default {
   name: 'app',
   data () {
     return {
-      msg: ''
+      sidebarMenu: []
     };
   },
   mounted() {
     this.setEnv(env);
     console.log(this.env);
+    axios.get('/static/data/sidebar.json').then((res) => {
+      this.sidebarMenu = res.data;
+    });
   },
   methods: {
     ...mapActions([
