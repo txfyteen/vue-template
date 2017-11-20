@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'gt-footer',
+  name: 'demo-footer',
   data () {
     return {
 

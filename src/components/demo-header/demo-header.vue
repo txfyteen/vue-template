@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'gt-header',
+  name: 'demo-header',
   data () {
     return {
 

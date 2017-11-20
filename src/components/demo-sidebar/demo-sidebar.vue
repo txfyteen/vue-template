@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'gt-sidebar',
+  name: 'demo-sidebar',
   props: {
     menu: {
       type: Array,

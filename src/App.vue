@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <gt-header />
-    <gt-sidebar :menu="sidebarMenu"/>
+    <demo-header />
+    <demo-sidebar :menu="sidebarMenu"/>
     <div class="main">
       <transition>
         <keep-alive>
@@ -9,16 +9,16 @@
         </keep-alive>
       </transition>
     </div>
-    <gt-footer />
+    <demo-footer />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { env } from 'api/env.js';
-import GtHeader from 'components/gt-header/gt-header';
-import GtSidebar from 'components/gt-sidebar/gt-sidebar';
-import GtFooter from 'components/gt-footer/gt-footer';
+import DemoHeader from 'components/demo-header/demo-header';
+import DemoSidebar from 'components/demo-sidebar/demo-sidebar';
+import DemoFooter from 'components/demo-footer/demo-footer';
 import axios from 'axios';
 
 export default {
@@ -46,9 +46,9 @@ export default {
     ])
   },
   components: {
-    GtHeader,
-    GtSidebar,
-    GtFooter
+    DemoHeader,
+    DemoSidebar,
+    DemoFooter
   }
 };
 </script>
