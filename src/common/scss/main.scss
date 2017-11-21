@@ -1,0 +1,35 @@
+@import "reset";
+
+@for $i from 1 through 200 {
+  .w-#{$i * 5} { width: 5px * $i };
+  .h-#{$i * 5} { height: 5px * $i };
+}
+
+@for $i from 1 through 150 {
+  .mt-#{$i} { margin-top: #{$i}px };
+  .mr-#{$i} { margin-right: #{$i}px };
+  .mb-#{$i} { margin-bottom: #{$i}px };
+  .ml-#{$i} { margin-left: #{$i}px };
+
+  .pt-#{$i} { padding-top: #{$i}px };
+  .pr-#{$i} { padding-right: #{$i}px };
+  .pb-#{$i} { padding-bottom: #{$i}px };
+  .pl-#{$i} { padding-left: #{$i}px };
+}
+
+@for $i from 1 through 30 {
+  .fz-#{$i} {font-size: #{$i}px };
+}
+
+.clearfix{
+  &:after{
+    display: table;
+    content:'';
+    clear:both;
+  }
+}
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}

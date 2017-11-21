@@ -15,6 +15,24 @@ const DemoForm = (resolve) => {
   });
 };
 
+const DemoForm2 = (resolve) => {
+  import('components/demo-form/demo-form2').then((module) => {
+    resolve(module);
+  });
+};
+
+const DemoTable = (resolve) => {
+  import('components/demo-table/demo-table').then((module) => {
+    resolve(module);
+  });
+};
+
+const DemoTable2 = (resolve) => {
+  import('components/demo-table/demo-table2').then((module) => {
+    resolve(module);
+  });
+};
+
 const router = new Router({
   mode: 'history',
   routes: [{
@@ -31,6 +49,21 @@ const router = new Router({
       path: '/demo-form',
       name: 'DemoForm',
       component: DemoForm
+    },
+    {
+      path: '/demo-form2',
+      name: 'DemoForm2',
+      component: DemoForm2
+    },
+    {
+      path: '/demo-table',
+      name: 'DemoTable',
+      component: DemoTable
+    },
+    {
+      path: '/demo-table2',
+      name: 'DemoTable2',
+      component: DemoTable2
     }
   ],
   scrollBehavior (to, from, savedPosition) {

@@ -1,4 +1,4 @@
-export const env = (function getEnv(hostname) {
+export const env = (function(hostname) {
   try {
     if (hostname.includes('dev.') >= 0) {
       return 'dev';

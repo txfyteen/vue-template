@@ -8,7 +8,7 @@ import VueLazyload from 'vue-lazyload';
 import store from './store';
 import Element from 'element-ui';
 
-import 'common/scss/reset.scss';
+import 'common/scss/main.scss';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false;

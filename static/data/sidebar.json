@@ -5,7 +5,7 @@
     "showSecond": false,
     "children": [
     {
-      "name": "Upload",
+      "name": "Upload1",
       "link": "demo-upload"
     }]
   },
@@ -15,9 +15,26 @@
     "showSecond": false,
     "children": [
     {
-      "name": "Form",
+      "name": "Form1",
       "link": "demo-form"
+    },
+    {
+      "name": "Form2",
+      "link": "demo-form2"
+    }]
+  },
+  {
+    "name": "Table",
+    "link": "/demo-table",
+    "showSecond": false,
+    "children": [
+    {
+      "name": "Table1",
+      "link": "demo-table"
+    },
+    {
+      "name": "Table2",
+      "link": "demo-table2"
     }]
   }
-
 ]

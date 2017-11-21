@@ -3,11 +3,17 @@
     <demo-header />
     <demo-sidebar :menu="sidebarMenu"/>
     <div class="main">
-      <transition>
-        <keep-alive>
-          <router-view/>
-        </keep-alive>
-      </transition>
+      <el-scrollbar class="page-component__scroll" ref="componentScrollBar">
+        <el-scrollbar class="page-component__nav">
+        </el-scrollbar>
+        <div class="page-container">
+         <transition>
+            <keep-alive>
+              <router-view/>
+            </keep-alive>
+          </transition>
+        </div>
+        </el-scrollbar>
     </div>
     <demo-footer />
   </div>
@@ -15,20 +21,24 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import axios from 'axios';
 import { env } from 'api/env.js';
 import DemoHeader from 'components/demo-header/demo-header';
 import DemoSidebar from 'components/demo-sidebar/demo-sidebar';
 import DemoFooter from 'components/demo-footer/demo-footer';
-import axios from 'axios';
 
 export default {
   name: 'app',
   data () {
     return {
+      componentScrollBar: null,
       sidebarMenu: []
     };
   },
   mounted() {
+    this.componentScrollBar = this.$refs.componentScrollBar;
+    this.componentScrollBox = this.componentScrollBar.$el.querySelector('.el-scrollbar__wrap');
+
     this.setEnv(env);
     console.log(this.env);
     axios.get('/static/data/sidebar.json').then((res) => {
@@ -44,6 +54,15 @@ export default {
     ...mapGetters([
       'env'
     ])
+  },
+  watch: {
+    '$route.path'() {
+      // 触发伪滚动条更新
+      this.componentScrollBox.scrollTop = 0;
+      this.$nextTick(() => {
+        this.componentScrollBar.update();
+      });
+    }
   },
   components: {
     DemoHeader,
@@ -67,8 +86,6 @@ export default {
     bottom: 0;
     left: 186px;
     right: 0;
-    overflow: auto;
-    padding: 16px;
   }
   .router-link-active,.router-link-exact-active{
     color: #fff;
@@ -78,5 +95,14 @@ export default {
     &:focus{
       color: #fff;
     }
+  }
+  .page-component__scroll {
+    height: 100%;
+    .el-scrollbar__wrap {
+      overflow-x: auto;
+    }
+  }
+  .page-container{
+    padding: 16px;
   }
 </style>
