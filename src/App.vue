@@ -7,7 +7,7 @@
         <el-scrollbar class="page-component__nav">
         </el-scrollbar>
         <div class="page-container">
-         <transition>
+         <transition name="slide">
             <keep-alive>
               <router-view/>
             </keep-alive>
@@ -73,36 +73,56 @@ export default {
 </script>
 
 <style lang="scss">
-  html,body{
-    height: 100%;
-  }
-  .app{
-    background: #eee;
-    height: 100%;
-  }
-  .main{
-    position: absolute;
-    top: 66px;
-    bottom: 0;
-    left: 186px;
-    right: 0;
-  }
-  .router-link-active,.router-link-exact-active{
+[v-cloak] {
+  display: none;
+}
+html,body{
+  height: 100%;
+}
+.app{
+  background: #eee;
+  height: 100%;
+}
+.main{
+  position: absolute;
+  top: 66px;
+  bottom: 0;
+  left: 186px;
+  right: 0;
+}
+.router-link-active,.router-link-exact-active{
+  color: #fff;
+}
+a{
+  color: #fff;
+  &:focus{
     color: #fff;
   }
-  a{
-    color: #fff;
-    &:focus{
-      color: #fff;
+}
+.page-component__scroll {
+  height: 100%;
+  .el-scrollbar__wrap {
+    overflow-x: auto;
+  }
+}
+.page-container{
+  position: relative;
+  padding: 16px;
+}
+
+.header{
+  .el-tabs__nav-wrap{
+    &:after{
+      display: none;
     }
   }
-  .page-component__scroll {
-    height: 100%;
-    .el-scrollbar__wrap {
-      overflow-x: auto;
-    }
+  .el-tabs__nav{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) !important;
   }
-  .page-container{
-    padding: 16px;
+  .el-tabs__header{
+    margin: 10px 0;
   }
+}
 </style>

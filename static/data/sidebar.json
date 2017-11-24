@@ -7,7 +7,12 @@
     {
       "name": "Upload1",
       "link": "demo-upload"
-    }]
+    },
+    {
+      "name": "Upload2",
+      "link": "demo-upload2"
+    }
+  ]
   },
   {
     "name": "Form",

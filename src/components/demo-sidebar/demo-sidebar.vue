@@ -99,6 +99,8 @@ export default {
       });
       if (this.mouseTrack.length > 3) {
         this.mouseTrack.shift();
+      } else {
+        this.mouseTrack.push({x: 0, y: 0});
       }
       this.currMousePos = this.mouseTrack[this.mouseTrack.length - 1];
       this.pThree = this.mouseTrack[this.mouseTrack.length - 2];

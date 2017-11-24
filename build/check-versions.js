@@ -43,7 +43,6 @@ module.exports = function () {
       const warning = warnings[i]
       console.log('  ' + warning)
     }
-    console.log()
     process.exit(1)
   }
 }

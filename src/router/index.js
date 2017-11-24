@@ -9,6 +9,12 @@ const DemoUpload = (resolve) => {
   });
 };
 
+const DemoUpload2 = (resolve) => {
+  import('components/demo-upload/demo-upload2').then((module) => {
+    resolve(module);
+  });
+};
+
 const DemoForm = (resolve) => {
   import('components/demo-form/demo-form').then((module) => {
     resolve(module);
@@ -43,7 +49,15 @@ const router = new Router({
     {
       path: '/demo-upload',
       name: 'DemoUpload',
-      component: DemoUpload
+      component: DemoUpload,
+      beforeEnter: (to, from, next) => {
+        next();
+      }
+    },
+    {
+      path: '/demo-upload2',
+      name: 'DemoUpload2',
+      component: DemoUpload2
     },
     {
       path: '/demo-form',
@@ -77,5 +91,7 @@ const router = new Router({
 router.beforeResolve((to, from, next) => {
   next();
 });
+router.afterEach((to, from) => {
 
+});
 export default router;
